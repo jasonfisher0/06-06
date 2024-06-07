@@ -1,0 +1,25 @@
+---
+title: "06-06-plot"
+author: "Jason Fisher"
+format: html
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(primer.data)
+
+```
+
+```{r}
+connectedness |> drop_na() |> 
+  ggplot(mapping = aes(x = population, y = connectedness))+
+  geom_point() + geom_smooth(method = "lm", se = FALSE) + 
+  scale_x_log10(labels = scales::comma_format())+
+  labs(title = " US County Populations versus Economic Connectedness", subtitle = "Population size   does not matter to EC", x = "Population", y = "Economic Connectedness", caption = "Opportunity Insights")
+
+```
+
